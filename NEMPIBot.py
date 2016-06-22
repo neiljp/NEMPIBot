@@ -19,7 +19,7 @@ suffixes=[]
 actions={}
 responses={}
 
-actions["src"]="TBC" # XXX TODO
+actions["src"]="https://github.com/neiljp/NEMPIBot"
 action_help=""
 
 def join_with_nick_to_channels(n,c):
