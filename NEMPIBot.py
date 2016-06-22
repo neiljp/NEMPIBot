@@ -3,35 +3,6 @@ raw_client_messages = True
 
 actions_char = '~'
 actions_usenotice = True
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#from machine import Pin
-#import onewire
-#from time import sleep_ms
-#ow = onewire.OneWire(Pin(2))
-#ds = onewire.DS18B20(ow)
-#roms = ds.scan()
-#
-#def temperature(x):
-#  global roms, ds
-#  ds.convert_temp()
-#  sleep_ms(750)
-#  return ds.read_temp(roms[0])
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#from gc import mem_free
-#from esp import flash_id
-#from machine import unique_id
-#actions = {
-#           "free":(lambda user: mem_free()),
-#           "tempC":(lambda user:"%.1f" % temperature(user)),
-#           "tempF":(lambda user:"%.1f" % (32+(temperature(user)*(9./5.)))),
- #          "flash_id":(lambda user: flash_id()),
- #          "unique_id":(lambda user: unique_id()),
-#          }
-#
-#responses = {#"[Hh][Ii] "+nick+".*":(lambda n: "Hi %s!" % n),
-#             "^[pP]ing.*":(lambda n: "ack"),
-#             nick+".*:(.*)":(lambda n: ""),
-#            }
 # ----------------------------------------------------------------------------
 #TODO Improve/unify repl reporting/debugging code
 import socket
@@ -66,6 +37,7 @@ def send_msg_to_channel(chan, msg, use_notice):
 
 user_match=":(\S+)!~?(\S+)@(\S+)\s"
 def do_server():
+  global sock,current_nick
   collect()
   line = sock.readline()
   if len(line) < 3: print("Unexpected short line length (%d characters)" % len(line))
