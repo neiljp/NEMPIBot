@@ -9,6 +9,8 @@ import socket
 import ure
 from gc import collect
 
+src="https://github.com/neiljp/NEMPIBot"
+
 collect()
 
 sock=None
@@ -19,7 +21,6 @@ suffixes=[]
 actions={}
 responses={}
 
-actions["src"]="https://github.com/neiljp/NEMPIBot"
 action_help=""
 
 def join_with_nick_to_channels(n,c):
@@ -123,6 +124,7 @@ def connect(server,port,channels_,nick_,suffixes_,actions_,responses_):
   actions=actions_
   responses=responses_
 
+  actions["src"]=src
   action_help = "Commands: help src "+" ".join(actions.keys())+" (prefix with "+actions_char+" or nick:)"
   sock = socket.socket()
   addr = socket.getaddrinfo(server, port)
