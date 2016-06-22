@@ -125,7 +125,7 @@ def connect(server,port,channels_,nick_,suffixes_,actions_,responses_):
   responses=responses_
 
   actions["src"]=src
-  action_help = "Commands: help src "+" ".join(actions.keys())+" (prefix with "+actions_char+" or nick:)"
+  action_help = "Commands: help "+" ".join(actions.keys())+" (prefix with "+actions_char+" or nick:)"
   sock = socket.socket()
   addr = socket.getaddrinfo(server, port)
   sock.connect(addr[0][-1])
